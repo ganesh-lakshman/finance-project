@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    {% if alert != 0 %}
+    <header>
+
+      <div class="alert alert-primary border text-center" role="alert">
+                    {{alert}}
+      </div>
+    </header>
+    {% endif %}
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Name</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for price in prices %}
+            <tr>
+
+              <td>{{price['symbol']}}</td>
+              <td>{{price["name"]}}</td>
+              <td>{{price["shares"]}}</td>
+              <td>{{price["price"]}}</td>
+              <td>{{price["total"]}}</td>
+            </tr>
+      {% endfor %}
+      <tr>
+          <td>CASH</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{cash}}</td>
+      </tr>
+        <tr>
+            <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+            <th>
+               {{total}}
+            </th>
+        </tr>
+  </tbody>
+</table>
+{% endblock %}
